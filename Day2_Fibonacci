@@ -1,0 +1,10 @@
+m5_makerchip_module   // (Expanded in Nav-TLV pane.)
+\TLV
+   $reset = *reset;
+   
+   $num[31:0] = $reset ? 1 : (>>1$num + >>2$num);
+   // Assert these to end simulation (before the cycle limit).
+   *passed = *cyc_cnt > 40;
+   *failed = 1'b0;
+\SV
+   endmodule
