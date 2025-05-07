@@ -1,0 +1,48 @@
+# Lab
+
+1. First created a c program to add numbers 1 to n: sum1ton.c
+    
+    ![image.png](attachment:5ce71e6e-7ebf-40c1-9f18-01284118f6f6:image.png)
+    
+    1. then compile using gcc : gcc sum1ton.c
+    2. run  output ./a.out
+2. 
+3. Now compile using riscv simulator:
+    1. riscv64-unknown-elf-gcc -O1 - mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c {lp is long pointer)
+    2. see the assembly commands using riscv64-unknown-elf-objdump -d sum1ton.o |less and search for main
+        
+        ![image.png](attachment:ea36355c-80ea-4726-b875-184227af4e32:image.png)
+        
+    3. changing to mode -ofast gives a different set
+        
+        ![image.png](attachment:87ec2783-e3e8-45d7-8268-e1e9e978e692:image.png)
+        
+    4. spike pk sum1ton.o to run it in a similar way to ./a.out
+        
+        ![image.png](attachment:5482d3a8-bf60-4787-879b-2c9a099ee7df:image.png)
+        
+    5. spike -d pk sum1ton.o opens a debugger.
+        1. run pc till first instruction
+            1. until pc 0 100b0 
+        2. reg 0 a2 (to see contents of core 0, register a2)
+        3. Enter runs the next instruction
+4. Write the same program using assembly language code:
+    
+    ![image.png](attachment:3bbcab3c-ec65-4e16-bcc1-e2efa8b36653:image.png)
+    
+    1. the code looks like
+    
+    ![image.png](attachment:885709a9-3614-4192-8cb8-ad3fda1d25dc:image.png)
+    
+    ![image.png](attachment:b7e45d8b-66d8-407c-9a44-65ad22c4f84f:image.png)
+    
+    1. Now upon running and seing the obj dump
+    
+    ![image.png](attachment:956be1ee-3a0c-43e8-84c9-5194fa9fafd0:image.png)
+    
+    ![image.png](attachment:3baa184d-633d-44eb-83f2-b25c6726e79c:image.png)
+    
+
+[Day3 logic using TL verilog](https://www.notion.so/Day3-logic-using-TL-verilog-1e87b8030cc6806489e5f888fad8e5a6?pvs=21)
+
+[RISCV Microarch](https://www.notion.so/RISCV-Microarch-1eb7b8030cc68051b65ef67189660ab1?pvs=21)
